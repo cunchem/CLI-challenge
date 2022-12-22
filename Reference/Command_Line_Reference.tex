@@ -1,0 +1,187 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% writeLaTeX Example: A quick guide to LaTeX
+%
+% Source: Dave Richeson (divisbyzero.com), Dickinson College
+% 
+% A one-size-fits-all LaTeX cheat sheet. Kept to two pages, so it 
+% can be printed (double-sided) on one piece of paper
+% 
+% Feel free to distribute this example, but please keep the referral
+% to divisbyzero.com
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,landscape]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage[os=win]{menukeys}
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+% -----------------------------------------------------------------------
+\colorlet{myBlue}{blue!40}
+\colorlet{myRed}{red!40}
+\title{GNU/Linux Command Line Refernce}
+
+\begin{document}
+	
+	\raggedright
+	\footnotesize
+	
+	\begin{center}
+		\Large{\textbf{Command Line Reference}} \\
+	\end{center}
+\vfill
+	\begin{multicols}{2}
+		\setlength{\premulticols}{1pt}
+		\setlength{\postmulticols}{1pt}
+		\setlength{\multicolsep}{1pt}
+		\setlength{\columnsep}{2pt}
+		
+	
+		
+
+		
+		\section{What is a command ?}
+		
+		A command is a written order given to the computer via a terminal. It follows a \emph{specific format} and is composed of a \colorbox{myBlue}{command name} followed by a set of \colorbox{myRed}{parameters}. 		Depending on the command, a parameter can be the name of a file or a directory, a string (piece of text) ... Most commands accept a special type of parameter called option that can be used to customize the behavior of the command. 
+		
+		\textbf{example:} \colorbox{myBlue}{ls} \colorbox{myRed}{-l} \colorbox{myRed}{document.txt} 
+		\begin{itemize}
+			\item  \colorbox{myBlue}{ls}: the name of the command
+			\item \colorbox{myRed}{-l}: the first parameter (an option)
+			\item \colorbox{myRed}{document.txt}: the second parameter (the name of a file)
+		\end{itemize}
+	
+	
+		\section{Opening a terminal}
+		The command line interface is used through a software called terminal. It exists many terminal softwares. To open a terminal:
+
+			\textbf{Linux}: go in \menu[,]{Activities} and search and open  \texttt{terminal}
+			
+			\textbf{Windows}: in the file explorer, Right-Click   \menu[,]{git-bash here}
+	
+		
+		
+		\section{The TAB key (autocompletion)}
+		
+		Commands can be long to write, especially with long file names. To speed up the process, most terminal support a feature called \emph{autocompletion} that can be activated by pressing the TAB key : \keys{\tab} (located on the left of the keyboard).
+		
+		Autocompletion means that the current name will be completed automatically.
+		Example: assuming there exists a directory called \texttt{Directory}, if I start writing the following command:
+		
+		\begin{verbatim}
+		$ cd Di
+		\end{verbatim}
+		
+		and if I press \keys{\tab}, the \texttt{Di} will be completed to \texttt{Directory}: 
+		
+		\begin{verbatim}
+		$ cd Directory
+		\end{verbatim}
+		\section{The man(ual)}
+		
+		Each command is accompanied by its manual which can be accessed through the command : \texttt{man command\_name}
+		
+		\textbf{example:} \texttt{man ls} 
+		
+		Navigating the man:
+		\begin{itemize}
+			\item \keys{q}: quit/exit
+			\item \keys{\arrowkeyup} \keys{\arrowkeydown}: move up/down
+			\item \keys{/} \texttt{word} \keys{\enter}: search for "word" (\keys{n} for next match and \keys{\ctrl + n} for previous match)
+		\end{itemize} 
+	    \section{Executing a file (program/script/...)}
+	    
+	    Some files can be executed from the command line. This means that the file is a kind of program written in a language understood by the terminal and/or the computer. To execute a file from the terminal, simply type its name after \texttt{./}.
+	    
+	    		\textbf{example:} \texttt{./myScript.sh} 
+	    
+	
+	
+	
+
+%		
+%		\section{Resources}
+%		Great symbol look-up site: \href{http://detexify.kirelabs.org/}{Detexify}\\
+%		\href{http://amath.colorado.edu/documentation/LaTeX/Symbols.pdf}{\LaTeX\ Mathematical Symbols}\\
+%		\href{ftp://tug.ctan.org/pub/tex-archive/info/symbols/comprehensive/symbols-letter.pdf}{The Comprehensive \LaTeX\ Symbol List}\\ 
+%		\href{http://mirrors.med.harvard.edu/ctan/info/lshort/english/lshort.pdf}{The Not So Short Introduction to \LaTeX\ 2$\varepsilon$}\\
+%		\href{http://www.tug.org/}{TUG: The \TeX\ Users Group}\\
+%		\href{http://www.ctan.org/}{CTAN: The Comprehensive \TeX\ Archive Network}\\
+%		~\\
+%		\LaTeX\ for the Mac: \href{http://www.tug.org/mactex/}{Mac\TeX}\\
+%		\LaTeX\ for the PC: \href{http://www.texniccenter.org/}{{\TeX}nicCenter} and \href{http://miktex.org/}{MiK\TeX}\\
+%		\LaTeX\ online: \href{http://www.writelatex.com/}{WriteLaTeX}.
+%		\vfill
+%		\hrule
+%		~\\
+%		Dave Richeson, Dickinson College, \href{http://divisbyzero.com/}{http://divisbyzero.com/}
+	\end{multicols}
+\vfill
+	\section{Basic commands}
+\begin{tabular}{llll}
+	\emph{command} & \emph{description} & \emph{example} & \emph{effect}\\
+	\hline
+	\multirow{3}{*}{\texttt{ls}} & 	\multirow{3}{*}{list directory content} & \verb!$ ls! & list current directory content\\ 
+	& & \verb!$ ls -a!  & list all content including hidden files \\ 
+	&	& \verb!$ ls -l!  & list detailed information on each file (size, modification date, permissions ...)\\ 			\hline
+	\multirow{3}{*}{cd} & 	\multirow{3}{*}{change directory} & \verb!$ cd Folder! & go to directory "Folder"\\
+	&		& \verb!$ cd .. ! & go to parent directory (..)\\
+	&		& \verb!$ cd ! & go to home directory \\ \hline
+	\multirow{1}{*}{\texttt{cp}} & 	\multirow{1}{*}{copy a file} & \verb!$ cp file1 file2! & copy file1 into file2 \\ 			\hline
+	\multirow{1}{*}{mv} & move or rename a file & \verb!$ mv file1 file2! & move file1 into file2 \\ \hline
+	\multirow{1}{*}{mkdir} & create a directory & \verb!$ mkdir Folder! & create a directory named "Folder" \\ \hline
+	\multirow{2}{*}{tar} & \multirow{2}{*}{manipulate archives} & \verb!$ tar -xvzf archive.tgz! & extract the content of the archive "archive.tgz" \\
+	& & \verb!$ tar -cvzf archive.tgz file1 file2! & group and compress file1 and file2 in the archive "archive.tgz" \\
+	\hline
+	\multirow{1}{*}{zip} & compress zip archive  & \verb!$ zip archive.zip  file1 file2 ! &  group and compress file1 and file2 in the archive "archive.zip" \\ \hline
+	\multirow{1}{*}{unzip} & extract zip archive  & \verb!$ unzip archive.zip  ! &  extract the content of the archive "archive.zip" \\ \hline
+	\multirow{1}{*}{cat} & print file  & \verb!$ cat document.txt  ! &  print the content of the file "document.txt" \\ \hline
+	\multirow{1}{*}{grep} & search lines matching a pattern & \verb!$ grep 'Hello' document.txt  ! &  print all the line of "document.txt" that include the word 'Hello' \\ \hline
+\end{tabular}
+
+	\vfill
+\end{document}
